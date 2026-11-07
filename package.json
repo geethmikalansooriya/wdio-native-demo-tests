@@ -1,0 +1,33 @@
+{
+  "name": "wdio-native-demo-tests",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "wdio run wdio.conf.ts",
+    "test:smoke": "wdio run wdio.conf.ts --spec test/specs/smoke.e2e.ts",
+    "appium:driver": "appium driver install uiautomator2"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^26.6.6",
+    "@wdio/appium-service": "^9.33.1",
+    "@wdio/cli": "^9.33.1",
+    "@wdio/globals": "^9.33.1",
+    "@wdio/local-runner": "^9.33.1",
+    "@wdio/mocha-framework": "^9.33.1",
+    "@wdio/spec-reporter": "^9.33.1",
+    "appium": "^3.9.0",
+    "appium-uiautomator2-driver": "^8.7.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^7.0.2",
+    "webdriverio": "^9.33.1"
+  }
+}

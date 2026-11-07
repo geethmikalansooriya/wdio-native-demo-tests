@@ -20,9 +20,9 @@ Behaviour that shapes the tests:
 | LG-01 | Login | positive | Login tab > Login. Enter `test@example.com`, password `password123`. Press LOGIN. | Alert with message "You are logged in!" and an OK button. | yes |
 | LG-02 | Login | negative | Login tab > Login. Enter `abc`, password `password123`. Press LOGIN. | Error "Please enter a valid email address" under the email field. No other errors. No alert. | yes |
 | LG-03 | Login | negative | Login tab > Login. Enter `test@example.com`, password `1234567` (7 chars). Press LOGIN. | Error "Please enter at least 8 characters" under the password field. No other errors. No alert. | yes |
-| FM-01 | Forms | positive | Forms tab. Type `Hello QA` into the input field. | The "You have typed:" line shows `Hello QA`. | no |
-| FM-02 | Forms | positive | Forms tab. Note the label ("Click to turn the switch ON"). Tap the switch. Tap it again. | After the first tap the label reads "Click to turn the switch OFF" and the switch is on. After the second tap the label reads "Click to turn the switch ON" and the switch is off. | no |
-| FM-03 | Forms | positive | Forms tab. Press the Active button. | Alert with message "This button is active" and an OK button. | no |
+| FM-01 | Forms | positive | Forms tab. Type `Hello QA` into the input field. | The "You have typed:" line shows `Hello QA`. | yes |
+| FM-02 | Forms | positive | Forms tab. Note the label ("Click to turn the switch ON"). Tap the switch. Tap it again. | After the first tap the label reads "Click to turn the switch OFF" and the switch is on. After the second tap the label reads "Click to turn the switch ON" and the switch is off. | yes |
+| FM-03 | Forms | positive | Forms tab. Press the Active button. | Alert with message "This button is active" and an OK button. | yes |
 
 ## Extra scenarios
 

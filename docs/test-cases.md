@@ -17,9 +17,9 @@ Behaviour that shapes the tests:
 | SU-01 | Sign up | positive | Login tab > Sign up. Enter `test@example.com`, password `password123`, confirm `password123`. Press SIGN UP. | Alert with message "You successfully signed up!" and an OK button. |yes |
 | SU-02 | Sign up | negative | Login tab > Sign up. Enter `abc`, password `password123`, confirm `password123`. Press SIGN UP. | Error "Please enter a valid email address" under the email field. No other errors. No alert. |yes |
 | SU-03 | Sign up | negative | Login tab > Sign up. Enter `test@example.com`, password `password123`, confirm `password124`. Press SIGN UP. | Error "Please enter the same password" under the confirm field. No other errors. No alert. |yes |
-| LG-01 | Login | positive | Login tab > Login. Enter `test@example.com`, password `password123`. Press LOGIN. | Alert with message "You are logged in!" and an OK button. | no |
-| LG-02 | Login | negative | Login tab > Login. Enter `abc`, password `password123`. Press LOGIN. | Error "Please enter a valid email address" under the email field. No other errors. No alert. | no |
-| LG-03 | Login | negative | Login tab > Login. Enter `test@example.com`, password `1234567` (7 chars). Press LOGIN. | Error "Please enter at least 8 characters" under the password field. No other errors. No alert. | no |
+| LG-01 | Login | positive | Login tab > Login. Enter `test@example.com`, password `password123`. Press LOGIN. | Alert with message "You are logged in!" and an OK button. | yes |
+| LG-02 | Login | negative | Login tab > Login. Enter `abc`, password `password123`. Press LOGIN. | Error "Please enter a valid email address" under the email field. No other errors. No alert. | yes |
+| LG-03 | Login | negative | Login tab > Login. Enter `test@example.com`, password `1234567` (7 chars). Press LOGIN. | Error "Please enter at least 8 characters" under the password field. No other errors. No alert. | yes |
 | FM-01 | Forms | positive | Forms tab. Type `Hello QA` into the input field. | The "You have typed:" line shows `Hello QA`. | no |
 | FM-02 | Forms | positive | Forms tab. Note the label ("Click to turn the switch ON"). Tap the switch. Tap it again. | After the first tap the label reads "Click to turn the switch OFF" and the switch is on. After the second tap the label reads "Click to turn the switch ON" and the switch is off. | no |
 | FM-03 | Forms | positive | Forms tab. Press the Active button. | Alert with message "This button is active" and an OK button. | no |
@@ -29,7 +29,7 @@ Behaviour that shapes the tests:
 | ID | Screen | Type | Steps | Expected result | Automated |
 |----|--------|------|-------|-----------------|-----------|
 | LG-04 | Login | boundary | Login tab > Login. Enter `test@example.com`, password `12345678` (exactly 8 chars). Press LOGIN. | Alert "You are logged in!". 8 characters is accepted, 7 is not (LG-03). | no |
-| LG-05 | Login | negative | Login tab > Login. Leave both fields empty. Press LOGIN. | Both errors show at once: "Please enter a valid email address" and "Please enter at least 8 characters". No alert. | no |
+| LG-05 | Login | negative | Login tab > Login. Leave both fields empty. Press LOGIN. | Both errors show at once: "Please enter a valid email address" and "Please enter at least 8 characters". No alert. | yes |
 | SU-04 | Sign up | negative | Login tab > Sign up. Enter `test@example.com`, password `1234567` (7 chars), confirm `1234567`. Press SIGN UP. | Error "Please enter at least 8 characters" under the password field. No alert. See observation 1 below about a second error. |no (see BUG-01) |
 | SU-06 | Sign up | negative | Login tab > Sign up. Leave all three fields empty. Press SIGN UP. | All three errors show at once: "Please enter a valid email address", "Please enter at least 8 characters" and "Please enter the same password". No alert. | yes |
 

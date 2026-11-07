@@ -1,8 +1,7 @@
 import { driver, expect } from '@wdio/globals';
+import { APP_ID } from '../config';
 import SignUpPage from '../pageobjects/SignUpPage';
 import NativeAlert from '../pageobjects/NativeAlert';
-
-const APP_ID = 'com.wdiodemoapp';
 
 describe('Sign up', () => {
     // Errors stay on screen until the next button press, so every test starts

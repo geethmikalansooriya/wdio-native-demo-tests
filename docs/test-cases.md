@@ -2,7 +2,7 @@
 
 All texts below were observed in the real app (v2.2.0, Android 17 emulator) through the Appium driver, not guessed.
 Test data: email `test@example.com`, password `password123` (11 chars).
-"Automated" is `no` until the spec exists; it is flipped to `yes` as each step is finished.
+"Automated" shows whether a test exists in the repo.
 
 Behaviour that shapes the tests:
 - Validation runs when the LOGIN / SIGN UP button is pressed, not while typing.
@@ -14,9 +14,9 @@ Behaviour that shapes the tests:
 
 | ID | Screen | Type | Steps | Expected result | Automated |
 |----|--------|------|-------|-----------------|-----------|
-| SU-01 | Sign up | positive | Login tab > Sign up. Enter `test@example.com`, password `password123`, confirm `password123`. Press SIGN UP. | Alert with message "You successfully signed up!" and an OK button. |yes |
-| SU-02 | Sign up | negative | Login tab > Sign up. Enter `abc`, password `password123`, confirm `password123`. Press SIGN UP. | Error "Please enter a valid email address" under the email field. No other errors. No alert. |yes |
-| SU-03 | Sign up | negative | Login tab > Sign up. Enter `test@example.com`, password `password123`, confirm `password124`. Press SIGN UP. | Error "Please enter the same password" under the confirm field. No other errors. No alert. |yes |
+| SU-01 | Sign up | positive | Login tab > Sign up. Enter `test@example.com`, password `password123`, confirm `password123`. Press SIGN UP. | Alert with message "You successfully signed up!" and an OK button. | yes |
+| SU-02 | Sign up | negative | Login tab > Sign up. Enter `abc`, password `password123`, confirm `password123`. Press SIGN UP. | Error "Please enter a valid email address" under the email field. No other errors. No alert. | yes |
+| SU-03 | Sign up | negative | Login tab > Sign up. Enter `test@example.com`, password `password123`, confirm `password124`. Press SIGN UP. | Error "Please enter the same password" under the confirm field. No other errors. No alert. | yes |
 | LG-01 | Login | positive | Login tab > Login. Enter `test@example.com`, password `password123`. Press LOGIN. | Alert with message "You are logged in!" and an OK button. | yes |
 | LG-02 | Login | negative | Login tab > Login. Enter `abc`, password `password123`. Press LOGIN. | Error "Please enter a valid email address" under the email field. No other errors. No alert. | yes |
 | LG-03 | Login | negative | Login tab > Login. Enter `test@example.com`, password `1234567` (7 chars). Press LOGIN. | Error "Please enter at least 8 characters" under the password field. No other errors. No alert. | yes |
@@ -28,14 +28,14 @@ Behaviour that shapes the tests:
 
 | ID | Screen | Type | Steps | Expected result | Automated |
 |----|--------|------|-------|-----------------|-----------|
-| LG-04 | Login | boundary | Login tab > Login. Enter `test@example.com`, password `12345678` (exactly 8 chars). Press LOGIN. | Alert "You are logged in!". 8 characters is accepted, 7 is not (LG-03). | no |
+| LG-04 | Login | boundary | Login tab > Login. Enter `test@example.com`, password `12345678` (exactly 8 chars). Press LOGIN. | Alert "You are logged in!". 8 characters is accepted, 7 is not (LG-03). | no (cut to keep the suite small) |
 | LG-05 | Login | negative | Login tab > Login. Leave both fields empty. Press LOGIN. | Both errors show at once: "Please enter a valid email address" and "Please enter at least 8 characters". No alert. | yes |
-| SU-04 | Sign up | negative | Login tab > Sign up. Enter `test@example.com`, password `1234567` (7 chars), confirm `1234567`. Press SIGN UP. | Error "Please enter at least 8 characters" under the password field. No alert. See observation 1 below about a second error. |no (see BUG-01) |
+| SU-04 | Sign up | negative | Login tab > Sign up. Enter `test@example.com`, password `1234567` (7 chars), confirm `1234567`. Press SIGN UP. | Error "Please enter at least 8 characters" under the password field. No alert. See observation 1 below about a second error. | no (see BUG-01) |
 | SU-06 | Sign up | negative | Login tab > Sign up. Leave all three fields empty. Press SIGN UP. | All three errors show at once: "Please enter a valid email address", "Please enter at least 8 characters" and "Please enter the same password". No alert. | yes |
 
 ## Observations from inspection
 
-1. **Possible app bug (SU-04):** with a 7-character password that matches the confirm field exactly, the app shows "Please enter at least 8 characters" and also "Please enter the same password". The passwords do match, so the second message is misleading. SU-04 is therefore not automated. It is written up as BUG-01 in [BUGS.md](../BUGS.md).
+1. **App bug (SU-04):** with a 7-character password that matches the confirm field exactly, the app shows "Please enter at least 8 characters" and also "Please enter the same password". The passwords do match, so the second message is misleading. SU-04 is therefore not automated. It is written up as BUG-01 in [BUGS.md](../BUGS.md).
 2. **Stale errors:** after a failed press, correcting the inputs does not remove the old errors. They clear only on the next press. The tests don't depend on this, but it's worth reporting.
 3. **Empty sign-up form:** shows all three errors at once (email, password length, same password).
 4. **Emails rejected:** `abc` and `a@b` (no domain dot). Both give "Please enter a valid email address".

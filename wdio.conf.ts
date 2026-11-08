@@ -30,7 +30,13 @@ if (process.env.UDID) {
 
 export const config: WebdriverIO.Config = {
     runner: 'local',
-    specs: ['./test/specs/**/*.e2e.ts'],
+    // New spec files must be added here by hand. Order follows the brief.
+specs: [
+    './test/specs/smoke.e2e.ts',
+    './test/specs/signup.e2e.ts',
+    './test/specs/login.e2e.ts',
+    './test/specs/forms.e2e.ts',
+],
 
     // One emulator can only run one Appium session, so run one spec file at a time.
     maxInstances: 1,

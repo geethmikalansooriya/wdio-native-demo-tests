@@ -64,6 +64,7 @@ npx wdio run wdio.conf.ts --spec test/specs/login.e2e.ts   # one spec file
 ```
 
 Spec files run **one at a time on purpose** (`maxInstances: 1`). There is one emulator, and a device can only host one Appium session (see Reliability decisions).
+They run in the order sign-up, login, forms, as in the brief, after the smoke test. The order is set in `specs` in `wdio.conf.ts`, so a new spec file has to be added to that list.
 
 Optional environment variables, used only when set:
 
@@ -78,16 +79,18 @@ Versions are pinned in `package-lock.json`.
 
 ## Why WebdriverIO + Appium + TypeScript
 
-- **Readable async code.** `async/await` reads like the steps a user takes.
+I chose Appium with WebdriverIO and TypeScript because I have worked with Appium and WebdriverIO in my projects, so I could focus on test design instead of learning a new tool. I considered Maestro, which is quicker to start with, but I wanted page objects, explicit waits and room to grow into CI and reporting. TypeScript gives type checking and readable async code, and the same approach could be extended to iOS.
+
+What this gives me in this project:
+
 - **Accessibility-id locators.** The app exposes ids like `input-email` and `button-LOGIN`, which are stable and meant for testing. Only the validation messages have no id, and they are found by exact text.
 - **Built-in waits.** Commands like `waitForDisplayed` and retrying assertions like `toHaveText` remove any need for fixed sleeps.
-- **A path to iOS.** The same page objects and specs could in principle run against the iOS build with a different capability set. Not attempted.
-- Mocha is used as the test runner, with the spec reporter. No Cucumber.
+- **Mocha runner.** Plain `describe`/`it` structure with the spec reporter. No Cucumber, to keep the tests short and readable.
 
 ## Project structure
 
 ```
-wdio.conf.ts              WebdriverIO + Appium configuration (capabilities, one worker, APK check)
+wdio.conf.ts              WebdriverIO + Appium configuration (capabilities, one worker, spec order, APK check)
 test/
   config.ts               shared constants (app package id)
   pageobjects/

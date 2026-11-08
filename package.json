@@ -1,15 +1,13 @@
 {
   "name": "wdio-native-demo-tests",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Appium + WebdriverIO (TypeScript, Mocha) tests for the sign-up, login and forms screens of the WebdriverIO Native Demo App v2.2.0 on Android",
   "directories": {
     "doc": "docs"
   },
   "scripts": {
     "test": "wdio run wdio.conf.ts",
-    "test:smoke": "wdio run wdio.conf.ts --spec test/specs/smoke.e2e.ts",
-    "appium:driver": "appium driver install uiautomator2"
+    "test:smoke": "wdio run wdio.conf.ts --spec test/specs/smoke.e2e.ts"
   },
   "keywords": [],
   "author": "",

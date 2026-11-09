@@ -107,7 +107,6 @@ docs/
   test-cases.md           every test case with exact texts, locators, observations, and automated yes/no
   screenshots/            evidence for the bug report
 BUGS.md                   bug report
-CLAUDE.md                 working rules given to the AI assistant (see AI use)
 apps/                     put the APK here (gitignored)
 ```
 
@@ -160,4 +159,6 @@ All results are from my own machine.
 
 ## AI use
 
-I used Claude Code throughout, to help scaffold the project and write the page objects, specs and docs, one step at a time with a commit after each step. The rules I gave it are in [CLAUDE.md](CLAUDE.md). I reviewed the code, ran the tests myself, and verified the locators and texts against the real app.
+I used Claude Code throughout, to help scaffold the project and write the page objects, specs and docs, one step at a time with a commit after each step. At the start I gave it working rules: keep the code plain and readable, use explicit waits only (no fixed sleeps), keep locators in page objects, and check every locator and message against the real app instead of guessing.
+
+I reviewed each file before committing, ran the tests myself, and checked the locators and error texts on the emulator. The AI also helped with the reliability review that found the parallel-run problem, and I decided which fixes to apply. The test design (which scenarios to cover, which extras to add, and what to leave out) was my decision.

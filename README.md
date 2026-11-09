@@ -90,6 +90,9 @@ What this gives me in this project:
 ## Project structure
 
 ```
+README.md                 setup, run instructions and design notes
+package.json              dependencies and npm scripts (test, test:smoke)
+tsconfig.json             TypeScript settings
 wdio.conf.ts              WebdriverIO + Appium configuration (capabilities, one worker, spec order, APK check)
 test/
   config.ts               shared constants (app package id)
@@ -159,6 +162,6 @@ All results are from my own machine.
 
 ## AI use
 
-I used Claude Code throughout, to help scaffold the project and write the page objects, specs and docs, one step at a time with a commit after each step. At the start I gave it working rules: keep the code plain and readable, use explicit waits only (no fixed sleeps), keep locators in page objects, and check every locator and message against the real app instead of guessing.
+I used Claude Code throughout, to help set up the project and write the page objects, specs and docs, one step at a time with a commit after each step. At the start I gave it working rules: keep the code plain and readable, use explicit waits only (no fixed sleeps), keep locators in page objects, and check every locator and message against the real app instead of guessing.
 
 I reviewed each file before committing, ran the tests myself, and checked the locators and error texts on the emulator. The AI also helped with the reliability review that found the parallel-run problem, and I decided which fixes to apply. The test design (which scenarios to cover, which extras to add, and what to leave out) was my decision.
